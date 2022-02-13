@@ -8,22 +8,24 @@ import android.widget.ImageView
 import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
+    lateinit var rollButton:Button
+    lateinit var resultImage:ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        val rollButton: Button = findViewById(R.id.roll_button)
+        resultImage = findViewById(R.id.result_image)
+        rollButton = findViewById(R.id.roll_button)
         rollButton.text = "Let's Roll!"
 
         rollButton.setOnClickListener{
-            rollDice()
+            rollDice(resultImage)
         }
 
 
     }
 
-    private fun rollDice(){
-        val resultImage: ImageView = findViewById(R.id.result_image)
+    private fun rollDice(resultImage:ImageView){
+
 
         val randomNumber:Double = Math.floor(Math.random() * 7)
         val drawableResource = when (randomNumber.toInt()){
